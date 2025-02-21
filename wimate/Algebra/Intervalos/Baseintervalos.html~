@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xml:lang="en-US" lang="en-US">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title></title>
+        <meta charset="utf-8">
+        <meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator">
+        <meta content="width=device-width,initial-scale=1" name="viewport">
+        <link href="css/intervalos.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/otrotema.css">
+        <meta content="intervalos.tex" name="src">
+
+   
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+    <script>
+    MathJax = {
+      // Configuración para cargar extensiones
+      loader: {
+        load: ['[tex]/color'] // Cargar la extensión 'color'
+      },
+      // Configuración de TeX
+      tex: {
+        //Paquetes
+        packages: { '[+]': ['color'] }, // Habilitar el paquete 'color'
+        //Comandos
+        macros: {
+         wmbox: ["\\;\\mbox(#1)\\;", 1], // Valor absoluto
+         tq: "\\;\\mbox{tal que}\\;",
+         p:["\\,#1\\,",1], //$ #1  $ 
+          colon:"\\subset\\!\\!\\!\\!\\!\\backslash", //símbolo colones
+          medcap: "\\mathbin{\\scalebox{1.5}{\\ensuremath{\\cap}}}", // Intersección escalada
+          RR: "\\mathbb{R}", // Números reales
+          abs: ["\\lvert #1 \\rvert", 1] // Valor absoluto
+          //mycommand: ["\\text{Mi comando}(#1, #2)", 2] // Comando con dos argumentos
+        },
+        inlineMath: [['$', '$'], ['\\(', '\\)']], // Habilitar $...$ y \(...\)
+        displayMath: [['$$', '$$'],['\\[', '\\]']] // Delimitadores para ecuaciones en modo display
+      },
+      options: {
+        renderActions: {
+          addMenu: [0, '', '']
+        }
+      },
+      chtml: {
+        scale: 0.93 // Escala de las ecuaciones
+      }
+    };
+     </script> 
+     
+     <style>
+     
+     /* ----------------- para script rrastrar puntos -------------------- */
+canvas {
+    border: 1px solid #ccc;
+    background: white;
+    display: block;
+}
+
+.micaja {
+    border: 1px solid lightgray;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin: 10px;
+    width: 590px;
+}
+
+
+
+.micaja .titulo {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.controls {
+    margin-bottom: 10px;
+}
+
+.controls input {
+    width: 120px;
+    text-align: center;
+}
+
+.controls span {
+    font-size: 24px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+#canvasIntersect {
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+
+#canvasUnion {
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+
+.salida {
+      position: absolute;
+      left: 0;
+      top: calc(50% + 20px); /* justo debajo de la recta, que se dibuja en HEIGHT/2 */
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      pointer-events: none;
+    }
+
+button {
+    margin-left: 5px;
+}
+     </style>                     
+    </head>     
+    
+<body>
+
+
+       <div class="micaja">
+        <div class="titulo">Script interactivo: Con los botones genere un intervalo y realice la representación gráfica de la unión.</div>
+        <div class="controls">
+            <!-- Campos de texto exclusivos para este script -->
+            <input type="text" id="int1Union" readonly><span>\( \cap \)</span>
+            <input type="text" id="int2Union" readonly>
+            <!-- Botones para generar intervalos y calcular intersección -->
+            <button id="btnGenerarUnion">Generar Intervalos</button>
+            <button id="btnCalcularUnion">Cálculo y representación gráfica de la Union</button>
+        </div>
+        <!-- Contenedor para el intervalo intersección (usado por MathJax) -->
+        <div id="resultadoUnion" style="text-align:center; margin-bottom:5px; font-size:18px;"></div>
+        <!-- Canvas exclusivo para este script -->
+        <canvas id="canvasUnion" width="565" height="200"></canvas>
+    </div>
+    
+    <script  src="js/intvunion.js">
+  </script>
+            
+</body>
+</html>

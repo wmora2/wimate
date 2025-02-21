@@ -1,0 +1,307 @@
+/* Importar fuente de Google */
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Basic:wght@400;700&display=swap');
+
+/* Estilo para el título */
+.title-container {
+    background-color: white;
+
+    /* Fondo blanco */
+    background-image: url('../images/fondotitulo.png');
+
+    /* Imagen de fondo */
+    background-size: cover;
+
+    /* Escalar la imagen al tamaño del contenedor */
+    background-position: center;
+    font-family: 'Gentium Basic', serif;
+    font-size: 3em;
+    text-align: center;
+    padding: 20px;
+    border-radius: 0;
+    margin-bottom: 20px;
+    color: white;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilo para detalles del autor */
+.author-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+
+    /*  */
+    padding: 5px;
+    border-radius: 0;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 0.8em;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Barra lateral  dentro del contenedor del autor */
+.author-container::before {
+    content: "";
+    position: absolute;
+    left: 0pt;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: #c10000ff;
+
+    /* amarillo */
+    border-radius: 0;
+}
+
+/* Estilo para la tabla dentro del contenedor del autor */
+.author-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.author-container td {
+    padding: 0pt;
+    border: none;
+    text-align: left;
+}
+
+/* Estilo para la primera fila de la tabla de autor */
+.author-container tr:first-child td {
+    font-size: 1.7em;
+}
+
+
+/* -----------------------otras listas------------------------------------------- */
+
+
+/* Estilo para la lista con la clase "milista" */
+ul.milista {
+    list-style-type: none; /* Elimina las viñetas por defecto */
+    padding-left: 20px; /* Añade un espacio para alinear el texto */
+     width: 100%;
+}
+
+/* Estilo para los elementos de la lista con la clase "milista" */
+ul.milista li::before {
+    content: "➤"; /* Usa un carácter personalizado */
+    color: #AA55FF; /* Cambia el color de la viñeta */
+    font-weight: bold;
+    display: inline-block;
+  font-size:100%; font-family: 'URW Gothic L', serif;
+    width: 1em;
+    margin-left: -1em;
+     
+}
+
+/* Espaciado entre elementos de la lista */
+ul.milista li {
+    margin-bottom: 10px;
+    font-size:100%; font-family: 'URW Gothic L', serif;
+    
+}
+
+
+/* -----------------------otras listas------------------------------------------- */
+dt {
+    font-weight: bold;
+}
+
+dl,
+dd {
+    font-size: 0.9rem;
+}
+
+dd {
+    margin-bottom: 0.5em;
+}
+
+
+/* Barra lateral amarilla */
+.sidebar {
+    width: 0px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 0;
+}
+
+/* ------------------------------Menu contenidos------------------- */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: white;
+    border: 0px;
+    margin-bottom: 0.3em;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 1px 5px;
+    text-decoration: none;
+}
+
+li {
+    text-align: left;
+    border-bottom: 1px solid #f2f2f2;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1em;
+    margin-bottom: 0.3em;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+li a.active {
+    background-color: #c10000ff;
+    color: white;
+    font-family: 'Gentium Basic', serif;
+    font-size: 1.5em;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+
+/* ---------------------- Tema (el css intervalos ya tiene el id: y fuente) ------------ */
+h1 {
+    font-family: 'Gentium Basic', serif;
+    font-size: 4em;
+}
+
+h2 {
+    font-family: 'Gentium Basic', serif;
+    font-size: 3em;
+}
+
+h3 {
+    font-family: 'Gentium Basic', serif;
+    font-size: 2em;
+}
+
+/* ----------------------Rectas------------------------------- */
+hr {
+}
+
+/* --------------------Contenedor dos columnas------------------------------------ */
+.caja-principal {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.imagen {
+    flex-shrink: 0;
+    width: 150px;
+}
+
+.imagen img {
+    width: 100%;
+}
+
+/* ----------------- para script rrastrar puntos -------------------- */
+canvas {
+    border: 1px solid #ccc;
+    background: white;
+    display: block;
+}
+
+.micaja {
+    border: 1px solid lightgray;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin: 10px;
+    width: 590px;
+}
+
+
+
+.micaja .titulo {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: 'Helvetica', sans-serif;                                           
+}
+
+.controls {
+    margin-bottom: 10px;
+}
+
+.controls input {
+    width: 120px;
+    text-align: center;
+}
+
+.controls span {
+    font-size: 24px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+#canvasIntersect {
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+
+#canvasUnion {
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+
+#canvasUnionIntvs {
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+#canvasCrear {
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+
+#canvasInteractive {
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+
+.salida {
+      position: absolute;
+      left: 0;
+      top: calc(50% + 20px); /* justo debajo de la recta, que se dibuja en HEIGHT/2 */
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      pointer-events: none;
+    }
+
+button {
+    margin-left: 5px;
+}
+
+
+
+
+  

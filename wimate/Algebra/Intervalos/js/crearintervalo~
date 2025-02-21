@@ -1,0 +1,150 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const line = document.getElementById('line');
+    const segment = document.getElementById('segment');
+    const diskA = document.getElementById('disk-a');
+    const diskB = document.getElementById('disk-b');
+    const labelA = document.getElementById('label-a');
+    const labelB = document.getElementById('label-b');
+    const intervalDisplay = document.getElementById('interval');
+    const numbersContainer = document.getElementById('numbers');
+    const marksContainer = document.getElementById('marks');
+
+    let a = 2; // Valor inicial de "a"
+    let b = 4; // Valor inicial de "b"
+    let aClosed = true; // Estado inicial del extremo "a" (cerrado)
+    let bClosed = true; // Estado inicial del extremo "b" (cerrado)
+
+    // Función para convertir un número decimal a fracción con máximo 2 dígitos en numerador y denominador
+    function toFraction(decimal) {
+        // Redondear a 2 decimales
+        const rounded = Math.round(decimal * 100) / 100;
+
+        // Si el valor está muy cerca de un entero (diferencia ≤ 0.01), mostrar el entero
+        const nearestInteger = Math.round(rounded);
+        if (Math.abs(rounded - nearestInteger) <= 0.01) {
+            return nearestInteger.toString();
+        }
+
+        // Convertir a fracción
+        const tolerance = 1.0e-4;
+        let numerator = 1, denominator = 1;
+        let x = rounded;
+        let fractionalPart = x - Math.floor(x);
+
+        while (fractionalPart > tolerance) {
+            x *= 10;
+            numerator = Math.round(x);
+            denominator *= 10;
+            fractionalPart = x - Math.floor(x);
+        }
+
+        // Simplificar la fracción
+        const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+        const divisor = gcd(numerator, denominator);
+        numerator /= divisor;
+        denominator /= divisor;
+
+        // Limitar a 2 dígitos en numerador y denominador
+        if (numerator.toString().length > 2 || denominator.toString().length > 2) {
+            return rounded.toFixed(2); // Si no se puede simplificar, mostrar el decimal redondeado
+        }
+
+        return denominator === 1 ? numerator : `${numerator}/${denominator}`;
+    }
+
+    // Actualiza la posición del segmento, discos y etiquetas
+    function updateSegment() {
+        const lineWidth = line.offsetWidth;
+        const aPos = ((a - 1) / 9) * lineWidth; // Mapea "a" a la posición en la línea
+        const bPos = ((b - 1) / 9) * lineWidth; // Mapea "b" a la posición en la línea
+
+        // Posiciona el segmento
+        segment.style.left = `${aPos}px`;
+        segment.style.width = `${bPos - aPos}px`;
+
+        // Posiciona los discos
+        diskA.style.left = `${aPos}px`;
+        diskB.style.left = `${bPos}px`;
+
+        // Posiciona las etiquetas debajo de los discos
+        labelA.style.left = `${aPos}px`;
+        labelB.style.left = `${bPos}px`;
+
+        // Actualiza el intervalo mostrado
+        const aFraction = toFraction(a);
+        const bFraction = toFraction(b);
+        intervalDisplay.textContent = `${aClosed ? '[' : ']'}${aFraction}, ${bFraction}${bClosed ? ']' : '['}`;
+    }
+
+    // Maneja el arrastre de los discos
+    function startDrag(e) {
+        e.preventDefault();
+        const disk = e.target;
+        const isDiskA = disk === diskA;
+
+        function onDrag(e) {
+            const lineRect = line.getBoundingClientRect();
+            const newPos = e.clientX - lineRect.left;
+            const lineWidth = lineRect.width;
+            const newValue = ((newPos / lineWidth) * 9) + 1; // Mapea la posición del ratón a un valor entre 1 y 10
+
+            if (isDiskA) {
+                a = Math.max(1, Math.min(newValue, b - 0.1)); // Limita "a" para que no pase a "b"
+            } else {
+                b = Math.min(10, Math.max(newValue, a + 0.1)); // Limita "b" para que no pase a "a"
+            }
+
+            updateSegment();
+        }
+
+        function stopDrag() {
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('mouseup', stopDrag);
+        }
+
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('mouseup', stopDrag);
+    }
+
+    // Cambia el estado del disco (relleno o vacío)
+    function toggleDisk(e) {
+        const disk = e.target;
+        disk.classList.toggle('open');
+        if (disk === diskA) {
+            aClosed = !aClosed;
+        } else {
+            bClosed = !bClosed;
+        }
+        updateSegment();
+    }
+
+    // Agrega las marcas y números debajo de la recta
+    function addMarksAndNumbers() {
+        for (let i = 1; i <= 10; i++) {
+            // Marcas
+            const mark = document.createElement('div');
+            mark.className = 'mark';
+            mark.style.left = `${((i - 1) / 9) * 100}%`;
+            marksContainer.appendChild(mark);
+
+            // Números
+            const number = document.createElement('span');
+            number.textContent = i;
+            number.style.position = 'absolute';
+            number.style.bottom = "-25px";
+            number.style.left = `${((i - 1) / 9) * 100}%`;
+            number.style.transform = 'translateX(-50%)';
+            numbersContainer.appendChild(number);
+        }
+    }
+
+    // Asigna eventos a los discos
+    diskA.addEventListener('mousedown', startDrag);
+    diskB.addEventListener('mousedown', startDrag);
+    diskA.addEventListener('dblclick', toggleDisk);
+    diskB.addEventListener('dblclick', toggleDisk);
+
+    // Inicializa la posición del segmento y los discos
+    addMarksAndNumbers();
+    updateSegment();
+});

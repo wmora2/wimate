@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Intervalos en Canvas sin MathJax</title>
+  <style>
+    body { margin: 20px; font-family: sans-serif; }
+    .micaja {
+      position: relative;
+      width: 800px;
+      height: 500px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+    }
+    canvas {
+      background: #fafafa;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="micaja">
+  <canvas id="canvas" width="800" height="500"></canvas>
+</div>
+
+<script>
+(function() {
+  // Parámetros y utilidades
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  const WIDTH = canvas.width;
+  const HEIGHT = canvas.height;
+  const MARGIN = 50;  // margen para la recta
+  
+  // Definimos el mundo (rango) de -10 a 10
+  const worldMin = -10, worldMax = 10;
+  function worldToCanvas(x) {
+    return MARGIN + ((x - worldMin) / (worldMax - worldMin)) * (WIDTH - 2 * MARGIN);
+  }
+  function canvasToWorld(x) {
+    return worldMin + ((x - MARGIN) / (WIDTH - 2 * MARGIN)) * (worldMax - worldMin);
+  }
+  
+  // Radio para los discos de los extremos
+  const RADIUS = 8;
+  
+  // Datos de los intervalos
+  const intervalo1 = {
+    a: -2,
+    b: 3,
+    aClosed: true,
+    bClosed: true,
+    color: "blue",
+    grosor: 6
+  };
+  const intervalo2 = {
+    p: 0,
+    q: 4,
+    pClosed: true,
+    qClosed: false,  // [0,4[
+    color: "green",
+    grosor: 10,
+    alpha: 0.6
+  };
+  
+  // Unión (se calcula al soltar el ratón)
+  let unionIntervalo = null; // { left, right, leftClosed, rightClosed }
+  
+  // Para el control de arrastre
+  let dragging = null; // { id: "intervalo1" o "intervalo2", extremo: "a", "b", "p" o "q" }
+  let offsetX = 0;
+  
+  // Función de redondeo: a dos decimales; si la parte decimal es menor que 0.08 se redondea al entero.
+  function redondear(x) {
+    const factor = 100;
+    let r = Math.round(x * factor) / factor;
+    const diff = Math.abs(x - Math.round(x));
+    return (diff < 0.08) ? Math.round(x) : r;
+  }
+  
+  // Calcula la unión de los intervalos (tomando el menor extremo y el mayor extremo)
+  function calcularUnion() {
+    let left, leftClosed;
+    const min1 = intervalo1.a, min2 = intervalo2.p;
+    if (min1 < min2) {
+      left = min1;
+      leftClosed = intervalo1.aClosed;
+    } else if (min2 < min1) {
+      left = min2;
+      leftClosed = intervalo2.pClosed;
+    } else {
+      left = min1;
+      leftClosed = intervalo1.aClosed || intervalo2.pClosed;
+    }
+    
+    let right, rightClosed;
+    const max1 = intervalo1.b, max2 = intervalo2.q;
+    if (max1 > max2) {
+      right = max1;
+      rightClosed = intervalo1.bClosed;
+    } else if (max2 > max1) {
+      right = max2;
+      rightClosed = intervalo2.qClosed;
+    } else {
+      right = max1;
+      rightClosed = intervalo1.bClosed || intervalo2.qClosed;
+    }
+    
+    unionIntervalo = { left, right, leftClosed, rightClosed };
+  }
+  
+  // Dibuja la escena (recta, intervalos y la unión)
+  function dibujar() {
+    // Limpiar canvas
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    
+    const yLine = HEIGHT / 2;
+    
+    // Dibuja la recta numérica
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(MARGIN, yLine);
+    ctx.lineTo(WIDTH - MARGIN, yLine);
+    ctx.stroke();
+    
+    // Dibuja marcas y números en la recta
+    ctx.fillStyle = "black";
+    for (let i = Math.ceil(worldMin); i <= worldMax; i++) {
+      const x = worldToCanvas(i);
+      ctx.beginPath();
+      ctx.moveTo(x, yLine - 5);
+      ctx.lineTo(x, yLine + 5);
+      ctx.stroke();
+      ctx.fillText(i, x - 3, yLine + 20);
+    }
+    
+    // Dibuja el primer intervalo (azul)
+    dibujarIntervalo(intervalo1.a, intervalo1.b, intervalo1.aClosed, intervalo1.bClosed, intervalo1.color, intervalo1.grosor, yLine);
+    
+    // Dibuja el segundo intervalo (verde, con transparencia)
+    ctx.save();
+    ctx.globalAlpha = intervalo2.alpha;
+    dibujarIntervalo(intervalo2.p, intervalo2.q, intervalo2.pClosed, intervalo2.qClosed, intervalo2.color, intervalo2.grosor, yLine);
+    ctx.restore();
+    
+    // Dibuja la unión (en magenta) si existe, un poco más arriba de la recta
+    if (unionIntervalo) {
+      dibujarIntervalo(unionIntervalo.left, unionIntervalo.right, unionIntervalo.leftClosed, unionIntervalo.rightClosed, "magenta", 8, yLine - 50);
+    }
+    
+    // Imprime la notación de los intervalos en la zona gráfica (debajo de la recta)
+    imprimirIntervalos(yLine + 40);
+  }
+  
+  // Función para dibujar un intervalo (segmento y extremos)
+  function dibujarIntervalo(x1, x2, x1Closed, x2Closed, color, grosor, y) {
+    const cx1 = worldToCanvas(x1);
+    const cx2 = worldToCanvas(x2);
+    
+    ctx.strokeStyle = color;
+    ctx.lineWidth = grosor;
+    ctx.beginPath();
+    ctx.moveTo(cx1, y);
+    ctx.lineTo(cx2, y);
+    ctx.stroke();
+    
+    // Dibuja los extremos como discos (rellenado si está cerrado, solo contorno si es abierto)
+    function dibujarExtremo(x, cerrado) {
+      ctx.beginPath();
+      ctx.arc(x, y, RADIUS, 0, 2 * Math.PI);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      if (cerrado) {
+        ctx.fillStyle = color;
+        ctx.fill();
+      }
+    }
+    dibujarExtremo(cx1, x1Closed);
+    dibujarExtremo(cx2, x2Closed);
+  }
+  
+  // Imprime la notación de los intervalos y la unión en el canvas (texto plano)
+  function imprimirIntervalos(yPos) {
+    // Redondeo de extremos
+    const a = redondear(intervalo1.a);
+    const b = redondear(intervalo1.b);
+    const p = redondear(intervalo2.p);
+    const q = redondear(intervalo2.q);
+    
+    // Notación de intervalos:
+    const int1 = (intervalo1.aClosed ? "[" : "]") + a + "," + b + (intervalo1.bClosed ? "]" : "[");
+    const int2 = (intervalo2.pClosed ? "[" : "]") + p + "," + q + (intervalo2.qClosed ? "]" : "[");
+    
+    let unionStr = "";
+    if (unionIntervalo) {
+      const L = redondear(unionIntervalo.left);
+      const R = redondear(unionIntervalo.right);
+      const leftBracket = unionIntervalo.leftClosed ? "[" : "]";
+      const rightBracket = unionIntervalo.rightClosed ? "]" : "[";
+      unionStr = leftBracket + L + "," + R + rightBracket;
+    }
+    
+    const unionSimbolo = " U ";
+    const resultado = int1 + unionSimbolo + int2 + " = " + unionStr;
+    
+    ctx.font = "20px sans-serif";
+    ctx.fillStyle = "black";
+    // Centrar el texto horizontalmente:
+    const textWidth = ctx.measureText(resultado).width;
+    const xText = (WIDTH - textWidth) / 2;
+    ctx.fillText(resultado, xText, yPos);
+  }
+  
+  // Manejo de eventos para arrastrar extremos y cambiar estado (doble click)
+  canvas.addEventListener("mousedown", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const yLine = HEIGHT / 2;
+    
+    function revisarExtremo(xWorld, idIntervalo, extremo) {
+      const cx = worldToCanvas(xWorld);
+      if (Math.abs(mouseX - cx) < RADIUS + 3 && Math.abs(mouseY - yLine) < RADIUS + 3) {
+        dragging = { id: idIntervalo, extremo: extremo };
+        offsetX = canvasToWorld(mouseX) - xWorld;
+      }
+    }
+    
+    revisarExtremo(intervalo1.a, "intervalo1", "a");
+    revisarExtremo(intervalo1.b, "intervalo1", "b");
+    revisarExtremo(intervalo2.p, "intervalo2", "p");
+    revisarExtremo(intervalo2.q, "intervalo2", "q");
+  });
+  
+  canvas.addEventListener("mousemove", (e) => {
+    if (dragging) {
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const newVal = canvasToWorld(mouseX) - offsetX;
+      
+      if (dragging.id === "intervalo1") {
+        if (dragging.extremo === "a" && newVal < intervalo1.b - 0.1) {
+          intervalo1.a = newVal;
+        } else if (dragging.extremo === "b" && newVal > intervalo1.a + 0.1) {
+          intervalo1.b = newVal;
+        }
+      } else if (dragging.id === "intervalo2") {
+        if (dragging.extremo === "p" && newVal < intervalo2.q - 0.1) {
+          intervalo2.p = newVal;
+        } else if (dragging.extremo === "q" && newVal > intervalo2.p + 0.1) {
+          intervalo2.q = newVal;
+        }
+      }
+      dibujar();
+    }
+  });
+  
+  canvas.addEventListener("mouseup", () => {
+    if (dragging) {
+      calcularUnion();
+      dragging = null;
+      dibujar();
+    }
+  });
+  
+  canvas.addEventListener("dblclick", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const yLine = HEIGHT / 2;
+    
+    function toggleExtremo(xWorld, propiedad, objeto) {
+      const cx = worldToCanvas(xWorld);
+      if (Math.abs(mouseX - cx) < RADIUS + 3 && Math.abs(mouseY - yLine) < RADIUS + 3) {
+        objeto[propiedad] = !objeto[propiedad];
+      }
+    }
+    
+    toggleExtremo(intervalo1.a, "aClosed", intervalo1);
+    toggleExtremo(intervalo1.b, "bClosed", intervalo1);
+    toggleExtremo(intervalo2.p, "pClosed", intervalo2);
+    toggleExtremo(intervalo2.q, "qClosed", intervalo2);
+    dibujar();
+  });
+  
+  // Dibuja la escena inicial
+  dibujar();
+})();
+</script>
+
+</body>
+</html>

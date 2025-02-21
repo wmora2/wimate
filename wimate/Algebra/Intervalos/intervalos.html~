@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html xml:lang="en-US" lang="en-US">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title></title>
+        <meta charset="utf-8">
+        <meta content="TeX4ht (https://tug.org/tex4ht/)" name="generator">
+        <meta content="width=device-width,initial-scale=1" name="viewport">
+        <link href="css/intervalos.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/otrotema.css">
+        <meta content="intervalos.tex" name="src">
+
+   
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+    <script>
+    MathJax = {
+      // Configuración para cargar extensiones
+      loader: {
+        load: ['[tex]/color'] // Cargar la extensión 'color'
+      },
+      // Configuración de TeX
+      tex: {
+        //Paquetes
+        packages: { '[+]': ['color'] }, // Habilitar el paquete 'color'
+        //Comandos
+        macros: {
+         wmbox: ["\\;\\mbox(#1)\\;", 1], // Valor absoluto
+         tq: "\\;\\mbox{tal que}\\;",
+         p:["\\,#1\\,",1], //$ #1  $ 
+          colon:"\\subset\\!\\!\\!\\!\\!\\backslash", //símbolo colones
+          medcap: "\\mathbin{\\scalebox{1.5}{\\ensuremath{\\cap}}}", // Intersección escalada
+          RR: "\\mathbb{R}", // Números reales
+          abs: ["\\lvert #1 \\rvert", 1] // Valor absoluto
+          //mycommand: ["\\text{Mi comando}(#1, #2)", 2] // Comando con dos argumentos
+        },
+        inlineMath: [['$', '$'], ['\\(', '\\)']], // Habilitar $...$ y \(...\)
+        displayMath: [['$$', '$$'],['\\[', '\\]']] // Delimitadores para ecuaciones en modo display
+      },
+      options: {
+        renderActions: {
+          addMenu: [0, '', '']
+        }
+      },
+      chtml: {
+        scale: 0.93 // Escala de las ecuaciones
+      }
+    };
+     </script>                      
+    </head>
+    
+    
+    
+    
+    
+    
+    
+    
+    <body>
+        <!-- Título y autor -->
+        <div class="title-container"> Desigualdades Lineales
+</div>
+        <div class="author-container">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>&nbsp;&nbsp;Walter Mora Flores</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;Un experimento con LaTeX, html,
+              make4ht, MathJax, DeepSeek y chatGPT</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p></p>
+        <div>
+            <ul>
+                <li>
+                    <a class="active" href="#home">Contenido</a>
+                </li>
+                <li>
+                    <a href="#intervalos">Intervalos</a>
+                </li>
+                <li>
+                    <a href="#interseccion-de-intervalos">Intersección de
+            intervalos</a>
+                </li>
+                <li>
+                    <a href="#union-de-intervalos">Unión de intervalos</a>
+                </li>
+            </ul>
+        </div>
+        <!-- ------------------------------------------------------------------------- -->
+        <hr>
+        <!-- Intervalos---------------------------------------------------------------- -->
+        <h3 class="sectionHead" id="intervalos"><span class="titlemark">1. </span>
+      Intervalos</h3>
+        <div class="caja-principal">
+            <div class="imagen"> 
+                <img src="images/rollo.png" alt="" width="159"> 
+            </div>
+            &nbsp;&nbsp;
+            <div class="texto"> Imaginemos que vamos a comprar tela y que el
+                metro vale \(\colon \, 1000\) el metro. Si solo tenemos
+                $\p{\colon 20\\,000}$, entonces <span class="ecti-1095">como
+          máximo</span>, podremos comprar $\p{20}$ metros de tela.<br class="newline">
+                Si denotamos con "$x$" la cantidad de metros de tela que vamos a
+                comprar, entonces la situación de comprar "$x$" metros de tela
+                se puede describir como "$0\leq \;\mbox{metros de tela}\; \leq
+                20$". 
+            </div>
+        </div>
+        <p>Usando la notación de conjuntos escribimos: $\p{\{x \tq 0\leq
+      x\leq 20\}}$ y podemos hacer una representación gráfica de este
+      conjunto en la recta real.</p>
+        <div class="center">
+            <!-- l. 49 -->
+            <p class="noindent"> </p>
+            <!-- l. 49 -->
+            <p class="noindent" id="-x-metros-de-tela-en-un-intervalo-de-a-"><img alt="PIC" class="includegraphics" src="images/int1.png" width="250"> </p>
+            <figcaption class="caption">
+                <span class="id"><span class="ecbx-0900">Figura&nbsp;1.1: </span></span>
+                <span class="content"><span class="ecrm-1000">"</span><!-- l. 49 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>x</mi>
+                    </math><span class="ecrm-1000">" metros de tela en un intervalo de</span> <!-- l. 49 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                            <mn>0</mn>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                        </mrow>
+                    </math> <span class="ecrm-1000">a </span><!-- l. 49 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                            <mn>20</mn>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                        </mrow>
+                    </math> </span>
+            </figcaption>
+            <!-- tex4ht:label?: x1-2001r1  -->             
+        </div>
+        <p> Pero en la realidad pasan situaciones como "voy a comprar entre
+      $5$ metros y $10$ metros" o "voy a comprar más de $5$ metros pero
+      estrictamente menos de $20$ metros". Estas situaciones las podemos
+      escribir así: </p><br class="newline">
+        <div class="tabular">
+            <table class="tabular" id="TBL-1" rules="groups">
+                <colgroup id="TBL-1-1g">
+                    <col id="TBL-1-1">
+                    <col id="TBL-1-2">
+                </colgroup>
+                <colgroup id="TBL-1-3g">
+                    <col id="TBL-1-3">
+                </colgroup>
+                <tbody>
+                    <tr class="hline" style="border-top:0.5px solid lightgray">
+</tr>
+                    <tr id="TBL-1-1-">
+                        <td class="td11" id="TBL-1-1-1" style="text-align:left;
+              white-space:nowrap; color: magenta">Situación en palabras:
+                            Comprar "
+                            <!-- l. 55 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>x</mi>
+                            </math>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "
+                            metros de tela en un intervalo 
+                        </td>
+                        <td class="td11" id="TBL-1-1-2" style="text-align:center;
+              white-space:nowrap;"> <br> </td>
+                        <td class="td11" id="TBL-1-1-3" style="text-align:left;
+              white-space:nowrap;color: magenta"> Descripción del
+              intervalo </td>
+                    </tr>
+                    <tr class="hline" style="border-top:1px solid lightgray">
+                        <td><br> </td>
+                        <td><br> </td>
+                        <td><br> </td>
+                    </tr>
+                    <tr id="TBL-1-2-">
+                        <td class="td11" id="TBL-1-2-1" style="text-align:left;
+              white-space:nowrap;"> "voy a comprar entre
+                            <!-- l. 56 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mn>5</mn>
+                            </math>
+                            metros y
+                            <!-- l. 56 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mrow>
+                                    <mn>10</mn>
+                                </mrow>
+                            </math>
+                            metros" 
+                        </td>
+                        <td class="td11" id="TBL-1-2-2" style="text-align:center;
+              white-space:nowrap;"> <br> </td>
+                        <td class="td11" id="TBL-1-2-3" style="text-align:left;
+              white-space:nowrap;">
+                            <!-- l. 56 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mrow>
+                                    <mn>5</mn>
+                                    <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                    <mi>x</mi>
+                                    <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                    <mn>10</mn>
+                                </mrow>
+                            </math>                             
+                        </td>
+                    </tr>
+                    <tr class="hline" style="border-top:1px solid lightgray">
+                        <td><br> </td>
+                        <td><br> </td>
+                        <td><br> </td>
+                    </tr>
+                    <tr id="TBL-1-3-">
+                        <td class="td11" id="TBL-1-3-1" style="text-align:left;
+              white-space:nowrap;"> "voy a comprar
+                            <!-- l. 57 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mn>5</mn>
+                            </math>
+                            o más metros pero menos de
+                            <!-- l. 57 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mrow>
+                                    <mn>20</mn>
+                                </mrow>
+                            </math>
+                            metros" 
+                        </td>
+                        <td class="td11" id="TBL-1-3-2" style="text-align:center;
+              white-space:nowrap;"> <br> </td>
+                        <td class="td11" id="TBL-1-3-3" style="text-align:left;
+              white-space:nowrap;">
+                            <!-- l. 58 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mrow>
+                                    <mn>5</mn>
+                                    <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                    <mi>x</mi>
+                                    <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                    <mn>20</mn>
+                                </mrow>
+                            </math>                             
+                        </td>
+                    </tr>
+                    <tr class="hline" style="border-top:1px solid lightgray">
+                        <td><br> </td>
+                        <td><br> </td>
+                        <td><br> </td>
+                    </tr>
+                    <tr id="TBL-1-4-">
+                        <td class="td11" id="TBL-1-4-1" style="text-align:left;
+              white-space:nowrap;"> "voy a comprar más de
+                            <!-- l. 59 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mn>5</mn>
+                            </math>
+                            metros pero menos de
+                            <!-- l. 59 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mrow>
+                                    <mn>10</mn>
+                                </mrow>
+                            </math>
+                            metros" 
+                        </td>
+                        <td class="td11" id="TBL-1-4-2" style="text-align:center;
+              white-space:nowrap;"> <br> </td>
+                        <td class="td11" id="TBL-1-4-3" style="text-align:left;
+              white-space:nowrap;">
+                            <!-- l. 60 -->
+                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mrow>
+                                    <mn>5</mn>
+                                    <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                    <mi>x</mi>
+                                    <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                    <mn>10</mn>
+                                </mrow>
+                            </math>                             
+                        </td>
+                    </tr>
+                    <tr class="hline" style="border-top:1px solid lightgray">
+</tr>
+                </tbody>
+            </table>             
+        </div><br class="newline">
+        <div class="tcolorbox wcajav" id="tcolobox-1">
+            <div class="tcolorbox-title">
+                <!-- l. 96 -->
+                <p class="indent"> Notación de intervalos y representación
+          gráfica</p>
+            </div>
+            <div class="tcolorbox-content">
+                <!-- l. 67 -->
+                <p class="noindent">También usamos una notación con paréntesis
+          cuadrados para describir un intervalo.<br class="newline"> </p>
+                <dl class="enumerate-enumitem">
+                    <dt class="enumerate-enumitem"> <!-- l. 69 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo class="MathClass-bin" stretchy="false">∙</mo>
+                        </math></dt>
+                    <dd class="enumerate-enumitem">El intervalo es "cerrado" en un
+                        extremo si el extremo se incluye y es "abierto" en un
+                        extremo si ese extremo se excluye. 
+</dd>
+                    <dt class="enumerate-enumitem"> <!-- l. 70 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo class="MathClass-bin" stretchy="false">∙</mo>
+                        </math></dt>
+                    <dd class="enumerate-enumitem">Un intervalo es <span class="ecti-1095">cerrado</span> si ambos extremos se
+                        incluyen y lo denotamos como
+                        <!-- l. 70 -->
+                        <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mspace class="thinspace" width="0.17em"></mspace>
+                                <mo class="MathClass-open" stretchy="false">[</mo>
+                                <mi>a</mi>
+                                <mo class="MathClass-punc" stretchy="false">,</mo>
+                                <mi>b</mi>
+                                <mo class="MathClass-close" stretchy="false">]</mo>
+                                <mspace class="thinspace" width="0.17em"></mspace>
+                            </mrow>
+                        </math>
+                    </dd>
+                    <dt class="enumerate-enumitem"> <!-- l. 71 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo class="MathClass-bin" stretchy="false">∙</mo>
+                        </math></dt>
+                    <dd class="enumerate-enumitem">Un intervalo es <span class="ecti-1095">abierto</span> si ambos extremos se
+                        excluyen y lo denotamos como
+                        <!-- l. 71 -->
+                        <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mspace class="thinspace" width="0.17em"></mspace>
+                                <mo class="MathClass-close" stretchy="false">]</mo>
+                                <mi>a</mi>
+                                <mo class="MathClass-punc" stretchy="false">,</mo>
+                                <mi>b</mi>
+                                <mo class="MathClass-open" stretchy="false">[</mo>
+                                <mspace class="thinspace" width="0.17em"></mspace>
+                            </mrow>
+                        </math>
+                    </dd>
+                    <dt class="enumerate-enumitem"> <!-- l. 72 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo class="MathClass-bin" stretchy="false">∙</mo>
+                        </math></dt>
+                    <dd class="enumerate-enumitem">Un intervalo es <span class="ecti-1095">semiabierto</span> si algún extremo se
+                        excluye, por ejmplo
+                        <!-- l. 72 -->
+                        <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mspace class="thinspace" width="0.17em"></mspace>
+                                <mo class="MathClass-close" stretchy="false">]</mo>
+                                <mi>a</mi>
+                                <mo class="MathClass-punc" stretchy="false">,</mo>
+                                <mi>b</mi>
+                                <mo class="MathClass-close" stretchy="false">]</mo>
+                                <mspace class="thinspace" width="0.17em"></mspace>
+                            </mrow>
+                        </math>
+                        o
+                        <!-- l. 72 -->
+                        <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mspace class="thinspace" width="0.17em"></mspace>
+                                <mo class="MathClass-open" stretchy="false">[</mo>
+                                <mi>a</mi>
+                                <mo class="MathClass-punc" stretchy="false">,</mo>
+                                <mi>b</mi>
+                                <mo class="MathClass-open" stretchy="false">[</mo>
+                                <mspace class="thinspace" width="0.17em"></mspace>
+                            </mrow>
+                        </math>
+                    </dd>
+                    <dt class="enumerate-enumitem"> <!-- l. 73 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo class="MathClass-bin" stretchy="false">∙</mo>
+                        </math></dt>
+                    <dd class="enumerate-enumitem">Para realizar la <span class="ecti-1095">representación gráfica</span> de un
+                        intervalo procedemos así:<br class="newline">
+                        <dl class="enumerate-enumitem">
+                            <dt class="enumerate-enumitem"> <!-- l. 76 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo class="MathClass-bin" stretchy="false">∙</mo>
+                                </math> </dt>
+                            <dd class="enumerate-enumitem">Dibujamos un segmento de
+                                recta de longitud adecuada 
+</dd>
+                            <dt class="enumerate-enumitem"> <!-- l. 77 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo class="MathClass-bin" stretchy="false">∙</mo>
+                                </math> </dt>
+                            <dd class="enumerate-enumitem">Dibujamos un segmento más
+                                grueso que inicia y finaliza en en los extremos del
+                                intervalo 
+</dd>
+                            <dt class="enumerate-enumitem"> <!-- l. 78 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo class="MathClass-bin" stretchy="false">∙</mo>
+                                </math> </dt>
+                            <dd class="enumerate-enumitem">En los extremos del
+                                segmento, dibujamos un disco relleno si el extremo está
+                                incluido en el intervalo y un disco sin relleno si el
+                                extremo no está incluido.
+</dd>
+                        </dl>
+                    </dd>
+                </dl>
+                <!-- l. 83 -->
+                <div class="tabular">
+                    <table class="tabular" id="TBL-2" rules="groups">
+                        <colgroup id="TBL-2-1g">
+                            <col id="TBL-2-1">
+                            <col id="TBL-2-2">
+                        </colgroup>
+                        <colgroup id="TBL-2-3g">
+                            <col id="TBL-2-3">
+                            <col id="TBL-2-4">
+                        </colgroup>
+                        <colgroup id="TBL-2-5g">
+                            <col id="TBL-2-5">
+                        </colgroup>
+                        <tbody>
+                            <tr class="hline" style="border-top:1px solid lightgray">
+                                <tr id="TBL-2-1-">
+                                    <td class="td11" colspan="5" id="TBL-2-1-1" style="text-align:left; white-space:nowrap;">
+                                        <div class="multicolumn" style="text-align:left;
+                    white-space:nowrap;">En estos intevalos suponemos
+                                            que
+                                            <!-- l. 88 -->
+                                            <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                                <mrow>
+                                                    <mi>a</mi>
+                                                    <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                                    <mi>b</mi>
+                                                </mrow>
+                                            </math>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tr>
+                            <tr class="hline" style="border-top:1px solid lightgray">
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                            </tr>
+                            <tr id="TBL-2-2-">
+                                <td class="td11" id="TBL-2-2-1" style="text-align:left;">
+                                    <!-- l. 89 -->
+                                    <p class="noindent">Notación en términos </p>
+                                    <!-- l. 89 -->
+                                    <p class="noindent">de desigualdades </p>
+                                </td>
+                                <td class="td11" id="TBL-2-2-2" style="text-align:left;">
+                                    <!-- l. 89 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-2-3" style="text-align:left;">
+                                    <!-- l. 89 -->
+                                    <p class="noindent">Notación de intervalo </p>
+                                    <!-- l. 89 -->
+                                    <p class="noindent">con paréntesis cuadrados </p>
+                                </td>
+                                <td class="td11" id="TBL-2-2-4" style="text-align:left;">
+                                    <!-- l. 89 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-2-5" style="text-align:left;">
+                                    <!-- l. 89 -->
+                                    <p class="noindent">Representación gráfica </p>
+                                </td>
+                            </tr>
+                            <tr class="hline" style="border-top:1px solid lightgray">
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                            </tr>
+                            <tr id="TBL-2-3-">
+                                <td class="td11" id="TBL-2-3-1" style="text-align:left;">
+                                    <!-- l. 90 -->
+                                    <p class="noindent"><!-- l. 90 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mi>a</mi>
+                                                <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                                <mi>x</mi>
+                                                <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                                <mi>b</mi>
+                                            </mrow>
+                                        </math> </p>
+                                </td>
+                                <td class="td11" id="TBL-2-3-2" style="text-align:left;">
+                                    <!-- l. 90 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-3-3" style="text-align:left;">
+                                    <!-- l. 90 -->
+                                    <p class="noindent"><!-- l. 90 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mo class="MathClass-open" stretchy="false">[</mo>
+                                                <mi>a</mi>
+                                                <mo class="MathClass-punc" stretchy="false">,</mo>
+                                                <mi>b</mi>
+                                                <mo class="MathClass-close" stretchy="false">]</mo>
+                                            </mrow>
+                                        </math> </p>
+                                </td>
+                                <td class="td11" id="TBL-2-3-4" style="text-align:left;">
+                                    <!-- l. 90 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-3-5" style="text-align:left;">
+                                    <!-- l. 90 -->
+                                    <p class="noindent"><img alt="PIC" class="includegraphics" src="images/int2.png" width="295"> </p>
+                                </td>
+                            </tr>
+                            <tr class="hline" style="border-top:1px solid lightgray">
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                            </tr>
+                            <tr id="TBL-2-4-">
+                                <td class="td11" id="TBL-2-4-1" style="text-align:left;">
+                                    <!-- l. 91 -->
+                                    <p class="noindent"><!-- l. 91 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mi>a</mi>
+                                                <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                                <mi>x</mi>
+                                                <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                                <mi>b</mi>
+                                            </mrow>
+                                        </math> </p>
+                                </td>
+                                <td class="td11" id="TBL-2-4-2" style="text-align:left;">
+                                    <!-- l. 91 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-4-3" style="text-align:left;">
+                                    <!-- l. 91 -->
+                                    <p class="noindent"><!-- l. 91 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mo class="MathClass-close" stretchy="false">]</mo>
+                                                <mi>a</mi>
+                                                <mo class="MathClass-punc" stretchy="false">,</mo>
+                                                <mi>b</mi>
+                                                <mo class="MathClass-close" stretchy="false">]</mo>
+                                            </mrow>
+                                        </math> </p>
+                                </td>
+                                <td class="td11" id="TBL-2-4-4" style="text-align:left;">
+                                    <!-- l. 91 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-4-5" style="text-align:left;">
+                                    <!-- l. 91 -->
+                                    <p class="noindent"><img alt="PIC" class="includegraphics" src="images/int3.png" width="295"> </p>
+                                </td>
+                            </tr>
+                            <tr class="hline" style="border-top:1px solid lightgray">
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                            </tr>
+                            <tr id="TBL-2-5-">
+                                <td class="td11" id="TBL-2-5-1" style="text-align:left;">
+                                    <!-- l. 92 -->
+                                    <p class="noindent"><!-- l. 92 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mi>a</mi>
+                                                <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                                <mi>x</mi>
+                                                <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                                <mi>b</mi>
+                                            </mrow>
+                                        </math> </p>
+                                </td>
+                                <td class="td11" id="TBL-2-5-2" style="text-align:left;">
+                                    <!-- l. 92 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-5-3" style="text-align:left;">
+                                    <!-- l. 92 -->
+                                    <p class="noindent"><!-- l. 92 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mo class="MathClass-close" stretchy="false">]</mo>
+                                                <mi>a</mi>
+                                                <mo class="MathClass-punc" stretchy="false">,</mo>
+                                                <mi>b</mi>
+                                                <mo class="MathClass-open" stretchy="false">[</mo>
+                                            </mrow>
+                                        </math> </p>
+                                </td>
+                                <td class="td11" id="TBL-2-5-4" style="text-align:left;">
+                                    <!-- l. 92 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-5-5" style="text-align:left;">
+                                    <!-- l. 92 -->
+                                    <p class="noindent"><img alt="PIC" class="includegraphics" src="images/int4.png" width="295"> </p>
+                                </td>
+                            </tr>
+                            <tr class="hline" style="border-top:1px solid lightgray">
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                                <td><br> </td>
+                            </tr>
+                            <tr id="TBL-2-6-">
+                                <td class="td11" id="TBL-2-6-1" style="text-align:left;">
+                                    <!-- l. 93 -->
+                                    <p class="noindent"><!-- l. 93 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mi>a</mi>
+                                                <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                                <mi>x</mi>
+                                                <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                                <mi>b</mi>
+                                            </mrow>
+                                        </math> </p>
+                                </td>
+                                <td class="td11" id="TBL-2-6-2" style="text-align:left;">
+                                    <!-- l. 93 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-6-3" style="text-align:left;">
+                                    <!-- l. 93 -->
+                                    <p class="noindent"><!-- l. 93 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mo class="MathClass-open" stretchy="false">[</mo>
+                                                <mi>a</mi>
+                                                <mo class="MathClass-punc" stretchy="false">,</mo>
+                                                <mi>b</mi>
+                                                <mo class="MathClass-open" stretchy="false">[</mo>
+                                            </mrow>
+                                        </math> </p>
+                                </td>
+                                <td class="td11" id="TBL-2-6-4" style="text-align:left;">
+                                    <!-- l. 93 -->
+                                    <p class="noindent"> </p><br>
+                                </td>
+                                <td class="td11" id="TBL-2-6-5" style="text-align:left;">
+                                    <!-- l. 93 -->
+                                    <p class="noindent"><img alt="PIC" class="includegraphics" src="images/int5.png" width="295"> </p>
+                                </td>
+                            </tr>
+                            <tr class="hline" style="border-top:1px solid lightgray">
+</tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+        
+        <br class="newline"> 
+        
+        <p class="noindent">En el script que sigue puedes:</p>
+        <br class="newline">
+        <ul class="milista">
+            <li>Arrastrar con el ratón sobre los extremos.
+            Los extremos del intervalo cambian</li>
+            <li>Hacer doble click sobre algún extremo del intervalo.
+             Cambia su estado, es decir, si esta cerrado pasa a abierto y si esta abierto pasa a cerrado. </li>
+            <li>Se actualiza el intervalo con notación de paréntesis cuadrados</li>
+        </ul>         
+        
+        <br class="newline">
+        
+        
+        <!-- SCRIPT arrastrar puntos intervalos requiere canvas { border: 1px solid #ccc; } en css -->
+        <div class="micaja" align="left">
+            <div class="titulo">Script interactivo. En los extremos del intervalo:  arrastre  o haga doble click.</div>
+            <div class="contenido">
+                <!-- Contenedor para la notación del intervalo interactivo (usado por MathJax) -->
+                <div id="intervalDisplayInteractive" style="font-size: 20px; margin-bottom: 10px;"></div>
+                <!-- Canvas exclusivo para el intervalo interactivo -->
+                <canvas id="canvasInteractive" width="550" height="200" style="border:1px solid #ccc;"></canvas>
+   <script src="js/crearintervalo.js"> </script>
+            </div>             
+        </div>         
+    </div>     
+    
+    <br class="newline">
+    
+    <div class="tcolorbox wcajav" id="tcolobox-2">
+        <div class="tcolorbox-title"> </div>
+        <div class="tcolorbox-content">
+            <!-- l. 101 -->
+            <p class="noindent">Casos especiales: Como <!-- l. 101 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mi>a</mi>
+                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                        <mi>b</mi>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          podemos tener el caso <!-- l. 101 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mi>a</mi>
+                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                        <mi>b</mi>
+                        <mo class="MathClass-punc" stretchy="false">.</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          En esta situación: </p>
+            <dl class="enumerate-enumitem">
+                <dt class="enumerate-enumitem"> 1. </dt>
+                <dd class="enumerate-enumitem">
+                    <!-- l. 103 -->
+                    <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                            <mo class="MathClass-open" stretchy="false">[</mo>
+                            <mi>a</mi>
+                            <mo class="MathClass-punc" stretchy="false">,</mo>
+                            <mi>a</mi>
+                            <mo class="MathClass-close" stretchy="false">]</mo>
+                            <mo class="MathClass-rel" stretchy="false">=</mo>
+                            <mi>a</mi>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                        </mrow>
+                    </math>
+                </dd>
+                <dt class="enumerate-enumitem"> 2. </dt>
+                <dd class="enumerate-enumitem">
+                    <!-- l. 104 -->
+                    <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                            <mo class="MathClass-open" stretchy="false">[</mo>
+                            <mi>a</mi>
+                            <mo class="MathClass-punc" stretchy="false">,</mo>
+                            <mi>a</mi>
+                            <mo class="MathClass-open" stretchy="false">[</mo>
+                            <mo class="MathClass-rel" stretchy="false">=</mo>
+                            <mi>∅</mi>
+                            <mo class="MathClass-punc" stretchy="false">,</mo>
+                            <mspace class="thickpace" width="0.28em"></mspace>
+                            <mspace class="thickpace" width="0.28em"></mspace>
+                            <mo class="MathClass-close" stretchy="false">]</mo>
+                            <mi>a</mi>
+                            <mo class="MathClass-punc" stretchy="false">,</mo>
+                            <mi>a</mi>
+                            <mo class="MathClass-close" stretchy="false">]</mo>
+                            <mo class="MathClass-rel" stretchy="false">=</mo>
+                            <mi>∅</mi>
+                            <mo class="MathClass-punc" stretchy="false">,</mo>
+                            <mspace class="thickpace" width="0.28em"></mspace>
+                            <mspace class="thickpace" width="0.28em"></mspace>
+                            <mo class="MathClass-close" stretchy="false">]</mo>
+                            <mi>a</mi>
+                            <mo class="MathClass-punc" stretchy="false">,</mo>
+                            <mi>a</mi>
+                            <mo class="MathClass-open" stretchy="false">[</mo>
+                            <mo class="MathClass-rel" stretchy="false">=</mo>
+                            <mi>∅</mi>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                        </mrow>
+                    </math>
+                </dd>
+                <dt class="enumerate-enumitem"> 3. </dt>
+                <dd class="enumerate-enumitem">A veces en un intervalo se
+                    excluye un valor, por ejemplo
+                    <!-- l. 105 -->
+                    <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                            <mo class="MathClass-open" stretchy="false">[</mo>
+                            <mn>2</mn>
+                            <mo class="MathClass-punc" stretchy="false">,</mo>
+                            <mn>6</mn>
+                            <mo class="MathClass-open" stretchy="false">[</mo>
+                            <mo class="MathClass-bin" stretchy="false">−</mo>
+                            <mn>3</mn>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                        </mrow>
+                    </math>
+                    indica que que en el intervalo
+                    <!-- l. 105 -->
+                    <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                            <mo class="MathClass-open" stretchy="false">[</mo>
+                            <mspace class="thinspace" width="0.17em"></mspace>
+                        </mrow>
+                    </math>                                                                                                                                                                                                                                                                                                                                                                                                                                                                            2,6[
+                    además del extremo "
+                    <!-- l. 105 -->
+                    <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mn>6</mn>
+                    </math>                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ",
+                    también se excluye el valor "
+                    <!-- l. 105 -->
+                    <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mn>3</mn>
+                    </math>                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "
+                </dd>
+            </dl>
+        </div>
+    </div><br class="newline"> 
+    <div class="tcolorbox wcajac" id="tcolobox-3">
+        <div class="tcolorbox-title">
+            <!-- l. 126 -->
+            <p class="indent"> <span class="pagd8t-x-x-110">Ejemplo</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <!-- l. 111 -->
+            <p class="noindent">En la siguiente tabla se muestran seis
+          filas. En cada fila, las columnas describen un intervalo de
+          las maneras distintas que hemos indicado.<br class="newline"> </p>
+            <!-- l. 114 -->
+            <p class="noindent">En la primera columna: Notación en términos
+          de desigualdades. En la segunda columna: Notación de intervalo
+          con paréntesis cuadrados y en la tercera columna:
+          Representación gráfica<br class="newline"> </p>
+            <div class="tabular">
+                <table class="tabular" id="TBL-3" rules="groups">
+                    <colgroup id="TBL-3-1g">
+                        <col id="TBL-3-1">
+                        <col id="TBL-3-2">
+                    </colgroup>
+                    <colgroup id="TBL-3-3g">
+                        <col id="TBL-3-3">
+                        <col id="TBL-3-4">
+                    </colgroup>
+                    <colgroup id="TBL-3-5g">
+                        <col id="TBL-3-5">
+                    </colgroup>
+                    <tbody>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+</tr>
+                        <tr id="TBL-3-1-">
+                            <td class="td11" id="TBL-3-1-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 118 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mi>x</mi>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mn>3</mn>
+                                    </mrow>
+                                </math>                                 
+                            </td>
+                            <td class="td11" id="TBL-3-1-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-1-3" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 118 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>3</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-3-1-4" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-1-5" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int6.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-3-2-">
+                            <td class="td11" id="TBL-3-2-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 119 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mn>5</mn>
+                                        <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                        <mi>x</mi>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mn>7</mn>
+                                    </mrow>
+                                </math>                                 
+                            </td>
+                            <td class="td11" id="TBL-3-2-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-2-3" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 119 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mn>5</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>7</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-3-2-4" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-2-5" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int7.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-3-3-">
+                            <td class="td11" id="TBL-3-3-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 120 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mi>x</mi>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mn>4</mn>
+                                    </mrow>
+                                </math>                                 
+                            </td>
+                            <td class="td11" id="TBL-3-3-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-3-3" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 120 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-3-3-4" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-3-5" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int9.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-3-4-">
+                            <td class="td11" id="TBL-3-4-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 121 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mi>x</mi>
+                                        <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                        <mn>4</mn>
+                                    </mrow>
+                                </math>                                 
+                            </td>
+                            <td class="td11" id="TBL-3-4-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-4-3" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 121 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-3-4-4" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-4-5" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int11.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-3-5-">
+                            <td class="td11" id="TBL-3-5-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 122 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mi>x</mi>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mn>3</mn>
+                                    </mrow>
+                                </math>                                 
+                            </td>
+                            <td class="td11" id="TBL-3-5-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-5-3" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 122 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>3</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-3-5-4" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-5-5" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int8.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-3-6-">
+                            <td class="td11" id="TBL-3-6-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 123 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-rel" stretchy="false">≤</mo>
+                                        <mi>x</mi>
+                                        <mo class="MathClass-rel" stretchy="false">&lt;</mo>
+                                        <mn>7</mn>
+                                    </mrow>
+                                </math>                                 
+                            </td>
+                            <td class="td11" id="TBL-3-6-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-6-3" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 123 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>7</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-3-6-4" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-3-6-5" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int10.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+</tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><br class="newline"> 
+    <div class="tcolorbox wcajam" id="tcolobox-4">
+        <div class="tcolorbox-title"> 
+            <!-- l. 135 -->
+            <p class="indent"> <span class="pagd8t-">Ejercicios</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <!-- l. 130 -->
+            <p class="noindent">En el "script" (programa) que sigue, puede
+          presionar el botón "Generar Intervalo" para generar un
+          intervalo. Luego en papel, dibuje la representación gráfica
+          del intervalo. Presione el botón "Dibujar intervalo" para
+          verificar su respuesta.<br class="newline"> </p>
+    </div>
+    </div>
+            <div>
+                <div class="micaja">
+                    <div class="titulo">Script: Generar intervalo y realizar representación gráfica</div>
+                    <div class="contenido"> 
+                        <!--      Script generar intervalo aleatorio     -->
+                        <p> <!-- Etiqueta en verde --> <label for="intervalo" style="color: green; font-weight: bold;">Intervalo</label>
+                        <br> <!-- Campo de texto para mostrar el intervalo generado --> 
+                        <input type="text" id="intervalo" readonly style="width:120px; margin-top: 5px;"> <br><br> 
+                        <!-- Botón para generar un intervalo aleatorio --> <button id="btnGenerarIntervalo">Generar Intervalo Aleatorio</button> 
+                        <!-- Botón para generar la representación gráfica --> 
+                        <button id="btnGenerar">Realizar representación gráfica</button> <br><br> <!-- Canvas para dibujar la recta numérica e intervalo --> <canvas id="canvas" width="550" height="200" style="border:1px solid #ccc;"></canvas> </p>
+   <script src="js/crearintervaloA.js">
+   </script>
+
+  
+                    </div>
+                </div>
+            </div>
+            <!-- l. 133 -->
+
+    <!-- l. 139 -->
+    <!-- Intersección de intervalos -->
+    <p class="noindent"> </p>
+    <h3 class="sectionHead" id="interseccion-de-intervalos"><span class="titlemark">1.2 </span> Intersección de intervalos</h3>
+    <!-- l. 139 -->
+    <p class="noindent">Dos intervalos pueden tener elementos en común.
+      La <span class="ecti-1095">intersección</span> de dos intervalos
+      es el conjunto de elementos que tienen estos intervalos en común.
+      Si no tienen elementos en común, la intersección el el conjunto
+      vacío (<!-- l. 139 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>∅</mi>
+        </math>) </p><br class="newline"> 
+    <div class="tcolorbox wcajav" id="tcolobox-5">
+        <div class="tcolorbox-title">
+            <!-- l. 151 -->
+            <p class="indent"> <span class="pagd8t-x-x-110">Determinando la
+            intersección de dos intervalos</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <dl class="enumerate-enumitem">
+                <dt class="enumerate-enumitem"> <!-- l. 146 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo class="MathClass-bin" stretchy="false">∙</mo>
+                    </math></dt>
+                <dd class="enumerate-enumitem">Dibujamos una recta numérica </dd>
+                <dt class="enumerate-enumitem"> <!-- l. 147 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo class="MathClass-bin" stretchy="false">∙</mo>
+                    </math></dt>
+                <dd class="enumerate-enumitem">Dibujamos cada intervalo sobre
+                    la recta con un segmeto grueso o con colores distintos,
+                    icluyendo los discos para sus extremos 
+</dd>
+                <dt class="enumerate-enumitem"> <!-- l. 148 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo class="MathClass-bin" stretchy="false">∙</mo>
+                    </math></dt>
+                <dd class="enumerate-enumitem">La intersección es el segmento
+                    que tienen en común ambos intervalos. Si algún intervalo
+                    tiene un (o dos) extremo abierto, este valo no puede estar
+                    en la intersección por no ser un valor que esta en los dos
+                    intervalos.
+</dd>
+            </dl>
+        </div>
+    </div><br class="newline">
+    <div class="tcolorbox wcajac" id="tcolobox-6">
+        <div class="tcolorbox-title">
+            <!-- l. 173 -->
+            <p class="indent"> <span class="pagd8t-x-x-110">Ejemplo</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <!-- l. 155 -->
+            <p class="noindent">Realizar la representación gráfica y
+          calcular la intersección de los intervalos <!-- l. 155 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                        <mn>2</mn>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mn>5</mn>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          y <!-- l. 155 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-close" stretchy="false">]</mo>
+                        <mn>1</mn>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mn>6</mn>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          es decir, calcular <!-- l. 155 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                        <mn>2</mn>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mn>5</mn>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-bin" stretchy="false">∩</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-close" stretchy="false">]</mo>
+                        <mn>1</mn>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mn>6</mn>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          y hacer la representación gráfica.<br class="newline"> </p>
+            <!-- l. 157 -->
+            <p class="noindent"><span style="font-size: 1.1em;color: #00008e">Solución: </span>Podemos
+          dibujar cada intervalo por separado y luego marcar el segmento
+          de intersección. En este caso se ve que lo que tiene en común
+          va de <!-- l. 157 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mn>1</mn>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          hasta <!-- l. 157 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mn>5</mn>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          pero no podemos tomar el <!-- l. 157 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mn>1</mn>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          ni el <!-- l. 157 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mn>5</mn>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          porque no son elementos de ambos intervalos. </p>
+            <div class="center">
+                <!-- l. 159 -->
+                <p class="noindent"> </p>
+                <!-- l. 160 -->
+                <p class="noindent" id="-interseccion-de-los-intervalos"><img alt="PIC" class="includegraphics" src="images/int12.png" width="443"> </p>
+                <figcaption class="caption">
+                    <span class="id"><span class="ecbx-0900">Figura&nbsp;1.2: </span></span>
+                    <span class="content"><span class="ecrm-1000">Intersección de
+                los intervalos</span> </span>
+                </figcaption>
+                <!-- tex4ht:label?: x1-3001r2  -->
+            </div>
+            <!-- l. 165 -->
+            <p class="noindent">Otra manera es dibujar ambos intervalos en
+          una misma recta y resaltar el segmento de intersección. </p>
+            <div class="center">
+                <!-- l. 167 -->
+                <p class="noindent"> </p>
+                <!-- l. 168 -->
+                <p class="noindent" id="-interseccion-de-los-intervalos1"><img alt="PIC" class="includegraphics" src="images/int13.png" width="258"> </p>
+                <figcaption class="caption">
+                    <span class="id"><span class="ecbx-0900">Figura&nbsp;1.3: </span></span>
+                    <span class="content"><span class="ecrm-1000">Intersección de
+                los intervalos</span> </span>
+                </figcaption>
+                <!-- tex4ht:label?: x1-3002r3  -->
+            </div>
+        </div>
+    </div><br class="newline"> 
+    <div class="tcolorbox wcajac" id="tcolobox-7">
+        <div class="tcolorbox-title">
+            <!-- l. 197 -->
+            <p class="indent"> <span class="pagd8t-x-x-110">Ejemplo</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <!-- l. 178 -->
+            <p class="noindent">En la siguiente tabla se muestran seis
+          filas. En cada fila, la primera columna indica la intersección
+          usando notación con paraéntesis cuadrados y la segunda columna
+          la representación gráfica de la intersección.<br class="newline"> </p>
+            <div class="tabular">
+                <table class="tabular" id="TBL-4" rules="groups">
+                    <colgroup id="TBL-4-1g">
+                        <col id="TBL-4-1">
+                        <col id="TBL-4-2">
+                    </colgroup>
+                    <colgroup id="TBL-4-3g">
+                        <col id="TBL-4-3">
+                    </colgroup>
+                    <tbody>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-4-1-">
+                            <td class="td11" id="TBL-4-1-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 183 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>0</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>0</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-4-1-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-4-1-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int14.png" width="221"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-4-2-">
+                            <td class="td11" id="TBL-4-2-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 185 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>6</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">{</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">}</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-4-2-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-4-2-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int15.png" width="221"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-4-3-">
+                            <td class="td11" id="TBL-4-3-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 187 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>5</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">{</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">}</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-4-3-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-4-3-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int16.png" width="221"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-4-4-">
+                            <td class="td11" id="TBL-4-4-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 189 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-4-4-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-4-4-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int17.png" width="221"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-4-5-">
+                            <td class="td11" id="TBL-4-5-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 191 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>0</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>5</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-4-5-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-4-5-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int18.png" width="221"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-4-6-">
+                            <td class="td11" id="TBL-4-6-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 193 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>7</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>3</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>3</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-4-6-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-4-6-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int19.png" width="221"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    
+    <br class="newline"> 
+        
+        <p class="noindent">En el script que sigue puedes:</p>
+        <dl>
+            <dt>Arrastrar con el ratón sobre los extremos</dt>
+            <dd>Los extremos del intervalo cambian</dd>
+            <dt>Hacer doble click sobre algún extremo del intervalo</dt>
+            <dd>Cambia su estado, es decir, si esta cerrado pasa a abierto y si esta abierto pasa a cerrado. </dd>
+            <dt>Se actuliza el intervalo con notación de paréntesis cuadrados y se calcula la intersección</dt>
+        </dl>         
+        
+        <br class="newline">
+    
+    <br class="newline">
+      <div class="micaja">
+    <div class="titulo">Script: En los extremos de los intevalos: Arrastre o haga doble click</div>
+    <!-- Contenedor para la impresión de intervalos e intersección (MathJax) -->
+    <div id="resultDisplayIntersect2"></div>
+    <!-- Canvas exclusivo para este script -->
+    <canvas id="canvasIntersect2" width="600" height="250"></canvas>
+  </div>
+  <script src="js/intvinterseccionA.js">
+   </script>
+    
+    <br class="newline">
+    
+ <br class="newline"> 
+    <div class="tcolorbox wcajam" id="tcolobox-4">
+        <div class="tcolorbox-title"> 
+            <!-- l. 135 -->
+            <p class="indent"> <span class="pagd8t-">Ejercicios</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <!-- l. 130 -->
+            <p class="noindent">En el "script" (programa) que sigue, puede:<br class="newline"> 
+          <br class="newline"> 
+<ul class="milista">
+   <li>Presionar el botón "Generar Intervalos" para generar un par de
+          intervalos y su representación gráfica.</li>
+   <li>Luego en papel,calcule la intersección y  dibuje la representación gráfica
+          de la intersección de los intervalos.</li>
+   <li>Presione el botón "Cálculo y representación gráfica" para
+          verificar su respuesta.</li>
+</ul>          
+          
+          </p>                    
+    </div>
+    </div>
+    
+    <br class="newline"> 
+    
+       <div class="micaja">
+        <div class="titulo">Script interactivo: Con los botones genere un intervalo y realice la representación gráfica.</div>
+        <div class="controls">
+            <!-- Campos de texto exclusivos para este script -->
+            <input type="text" id="int1Intersect" readonly><span>\( \cap \)</span>
+            <input type="text" id="int2Intersect" readonly>
+            <!-- Botones para generar intervalos y calcular intersección -->
+            <button id="btnGenerarIntersect">Generar Intervalos</button>
+            <button id="btnCalcularIntersect">Cálculo y representación gráfica de la  intersección</button>
+        </div>
+        <!-- Contenedor para el intervalo intersección (usado por MathJax) -->
+        <div id="resultadoInterseccionIntersect" style="text-align:center; margin-bottom:5px; font-size:18px;"></div>
+        <!-- Canvas exclusivo para este script -->
+        <canvas id="canvasIntersect" width="565" height="200"></canvas>
+    </div>
+    
+    <script  src="js/intvinterseccionGC.js">
+  </script>
+
+  
+  
+  
+  
+  
+    <!-- l. 200 -->
+    <p class="noindent"> </p>
+    <h3 class="sectionHead" id="union-de-intervalos"><span class="titlemark">1.3 </span> Unión de intervalos</h3>
+    <!-- l. 200 -->
+    <p class="noindent">La <span class="ecti-1095">unión</span> de dos
+      intervalos es el conjunto de elementos que están en ambos
+      intervalos </p>
+    <div class="tcolorbox wcajav" id="tcolobox-8">
+        <div class="tcolorbox-title">
+            <!-- l. 211 -->
+            <p class="indent"> <span class="pagd8t-x-x-110">Determinando la
+            unión de dos intervalos</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <dl class="enumerate-enumitem">
+                <dt class="enumerate-enumitem"> <!-- l. 207 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo class="MathClass-bin" stretchy="false">∙</mo>
+                    </math></dt>
+                <dd class="enumerate-enumitem">Dibujamos una recta numérica </dd>
+                <dt class="enumerate-enumitem"> <!-- l. 208 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo class="MathClass-bin" stretchy="false">∙</mo>
+                    </math></dt>
+                <dd class="enumerate-enumitem">Dibujamos cada intervalo sobre
+                    la recta con un segmeto grueso o con colores distintos,
+                    icluyendo los discos para sus extremos 
+</dd>
+                <dt class="enumerate-enumitem"> <!-- l. 209 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo class="MathClass-bin" stretchy="false">∙</mo>
+                    </math></dt>
+                <dd class="enumerate-enumitem">La unión es el segmento (o los
+                    segmentos) que representan los intervalos. La parte donde se
+                    traslapan (si hubiera) solo se considera una vez.
+</dd>
+            </dl>
+        </div>
+    </div><br class="newline"> 
+    <div class="tcolorbox wcajac" id="tcolobox-9">
+        <div class="tcolorbox-title">
+            <!-- l. 225 -->
+            <p class="indent"> <span class="pagd8t-x-x-110">Ejemplo</span></p>
+        </div>         
+        <div class="tcolorbox-content">
+            <!-- l. 216 -->
+            <p class="noindent">Realizar la representación gráfica y
+          calcular la unión de los intervalos <!-- l. 216 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                        <mn>2</mn>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mn>5</mn>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          y <!-- l. 216 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-close" stretchy="false">]</mo>
+                        <mn>1</mn>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mn>6</mn>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          es decir, calcularr <!-- l. 216 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                        <mn>2</mn>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mn>5</mn>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-bin" stretchy="false"> ∪</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-close" stretchy="false">]</mo>
+                        <mn>1</mn>
+                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                        <mn>6</mn>
+                        <mo class="MathClass-open" stretchy="false">[</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          y hacer la representación gráfica.<br class="newline"> </p>
+            <!-- l. 218 -->
+            <p class="noindent"><span style="font-size: 1.1em;color: #00008e">Solución: </span>Podemos
+          dibujar cada intervalo por separado y luego marcar el segmento
+          (o segmentos) que representan la unión. En este caso se ve que
+          la unión va de <!-- l. 218 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                        <mn>2</mn>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          hasta <!-- l. 218 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mn>6</mn>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          pero sin incluir el <!-- l. 218 --><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                        <mn>6</mn>
+                        <mo class="MathClass-punc" stretchy="false">.</mo>
+                        <mspace class="thinspace" width="0.17em"></mspace>
+                    </mrow>
+                </math>
+          El <span class="ecti-1095">traslape de ambos intervalos</span>
+          solo se toma en cuenta una vez. De esta manera podemos
+          concluir que </p>
+            <table class="equation-star">
+                <tbody>
+                    <tr>
+                        <td>
+                            <!-- l. 219 -->
+                            <math class="equation" display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mrow>
+                                    <mo class="MathClass-open" stretchy="false">[</mo>
+                                    <mo class="MathClass-bin" stretchy="false">−</mo>
+                                    <mn>2</mn>
+                                    <mo class="MathClass-punc" stretchy="false">,</mo>
+                                    <mn>5</mn>
+                                    <mo class="MathClass-open" stretchy="false">[</mo>
+                                    <mspace class="thinspace" width="0.17em"></mspace>
+                                    <mo class="MathClass-bin" stretchy="false"> ∪</mo>
+                                    <mspace class="thinspace" width="0.17em"></mspace>
+                                    <mo class="MathClass-close" stretchy="false">]</mo>
+                                    <mn>1</mn>
+                                    <mo class="MathClass-punc" stretchy="false">,</mo>
+                                    <mn>6</mn>
+                                    <mo class="MathClass-open" stretchy="false">[</mo>
+                                    <mo class="MathClass-rel" stretchy="false">=</mo>
+                                    <mo class="MathClass-open" stretchy="false">[</mo>
+                                    <mo class="MathClass-bin" stretchy="false">−</mo>
+                                    <mn>2</mn>
+                                    <mo class="MathClass-punc" stretchy="false">,</mo>
+                                    <mn>6</mn>
+                                    <mo class="MathClass-open" stretchy="false">[</mo>                                     
+                                </mrow>
+                            </math>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="center">
+                <!-- l. 221 -->
+                <p class="noindent"> </p>
+                <!-- l. 222 -->
+                <p class="noindent" id="-unionde-los-intervalos"><img alt="PIC" class="includegraphics" src="images/int20.png" width="295"> </p>
+                <figcaption class="caption">
+                    <span class="id"><span class="ecbx-0900">Figura&nbsp;1.4: </span></span>
+                    <span class="content"><span class="ecrm-1000">Uniónde los
+                intervalos</span> </span>
+                </figcaption>
+                <!-- tex4ht:label?: x1-4001r4  -->
+            </div>
+        </div>
+    </div><br class="newline">
+    <div class="tcolorbox wcajac" id="tcolobox-10">
+        <div class="tcolorbox-title">
+            <!-- l. 251 -->
+            <p class="indent"> <span class="pagd8t-x-x-110">Ejemplo</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <!-- l. 230 -->
+            <p class="noindent">En la siguiente tabla se muestran seis
+          filas. En cada fila, la primera columna indica la unión usando
+          notación con paraéntesis cuadrados y la segunda columna la
+          representación gráfica de esta unión.<br class="newline"> </p>
+            <div class="tabular">
+                <table class="tabular" id="TBL-5" rules="groups">
+                    <colgroup id="TBL-5-1g">
+                        <col id="TBL-5-1">
+                        <col id="TBL-5-2">
+                    </colgroup>
+                    <colgroup id="TBL-5-3g">
+                        <col id="TBL-5-3">
+                    </colgroup>
+                    <tbody>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+</tr>
+                        <tr id="TBL-5-1-">
+                            <td class="td11" id="TBL-5-1-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 235 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>0</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-5-1-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-5-1-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int21.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-5-2-">
+                            <td class="td11" id="TBL-5-2-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 237 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>6</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>6</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-5-2-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-5-2-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int22.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-5-3-">
+                            <td class="td11" id="TBL-5-3-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 239 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>5</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>5</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-5-3-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-5-3-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int23.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-5-4-">
+                            <td class="td11" id="TBL-5-4-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 241 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-5-4-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-5-4-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int24.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-5-5-">
+                            <td class="td11" id="TBL-5-5-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 243 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>0</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>4</mn>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>5</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>0</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>5</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-5-5-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-5-5-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int25.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-5-6-">
+                            <td class="td11" id="TBL-5-6-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 245 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>0</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>3</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>0</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>3</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-5-6-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-5-6-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int26.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+                            <td><br> </td>
+                            <td><br> </td>
+                            <td><br> </td>
+                        </tr>
+                        <tr id="TBL-5-7-">
+                            <td class="td11" id="TBL-5-7-1" style="text-align:center; white-space:nowrap;">
+                                <!-- l. 247 -->
+                                <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-bin" stretchy="false"> ∩</mo>
+                                        <mspace class="thinspace" width="0.17em"></mspace>
+                                        <mo class="MathClass-close" stretchy="false">]</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>3</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-rel" stretchy="false">=</mo>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mn>2</mn>
+                                        <mo class="MathClass-punc" stretchy="false">,</mo>
+                                        <mn>3</mn>
+                                        <mo class="MathClass-open" stretchy="false">[</mo>
+                                        <mo class="MathClass-bin" stretchy="false">−</mo>
+                                        <mo class="MathClass-open" stretchy="false">{</mo>
+                                        <mn>1</mn>
+                                        <mo class="MathClass-close" stretchy="false">}</mo>
+                                    </mrow>
+                                </math>
+                            </td>
+                            <td class="td11" id="TBL-5-7-2" style="text-align:center; white-space:nowrap;"> <br> </td>
+                            <td class="td11" id="TBL-5-7-3" style="text-align:center; white-space:nowrap;"> 
+                                <img alt="PIC" class="includegraphics" src="images/int27.png" width="295"> 
+                            </td>
+                        </tr>
+                        <tr class="hline" style="border-top:1px solid lightgray">
+</tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+<br class="newline">
+
+
+    <br class="newline"> 
+        
+        <p class="noindent">En el script que sigue puedes:</p>
+        <br class="newline">
+        <ul class="milista">
+            <li>Arrastrar con el ratón sobre los extremos.
+            Los extremos del intervalo cambian</li>
+            <li>Hacer doble click sobre algún extremo del intervalo.
+             Cambia su estado, es decir, si esta cerrado pasa a abierto y si esta abierto pasa a cerrado. </li>
+            <li>Calcula la unión de estos intervalos con  paréntesis cuadrados</li>
+        </ul>         
+        
+        <br class="newline">
+        
+        
+      <div class="micaja">
+        <div class="titulo">Script interactivo: Con los extremos: Arrastre y/o haga doble click</div>
+        <!-- Contenedor para el intervalo intersección (usado por MathJax) -->
+          
+        <!-- Canvas exclusivo para este script -->
+        <canvas id="canvasUnion" width="565" height="200"></canvas>
+    </div>
+    
+    <script  src="js/intvunionB.js">
+  </script>
+
+
+
+<br class="newline">
+
+<br class="newline"> 
+    <div class="tcolorbox wcajam" id="tcolobox-4">
+        <div class="tcolorbox-title"> 
+            <!-- l. 135 -->
+            <p class="indent"> <span class="pagd8t-">Ejercicios</span></p>
+        </div>
+        <div class="tcolorbox-content">
+            <!-- l. 130 -->
+            <p class="noindent">En el "script" (programa) que sigue, puede:<br class="newline"> 
+          <br class="newline"> 
+<ul class="milista">
+   <li>Presionar el botón "Generar Intervalos" para generar un par de
+          intervalos.</li>
+   <li>Luego en papel,calcule la unión de estos intervalos y  dibuje la representación gráfica
+          de la unión de los intervalos.</li>
+   <li>Presione el botón "Cálculo y representación gráfica" para
+          verificar su respuesta.</li>
+</ul>          
+          
+          </p>                    
+    </div>
+    </div>
+    
+    <br class="newline">   
+
+<div>
+<div class="micaja">
+        <div class="titulo">Script interactivo: Con los botones genere un intervalo y realice la representación gráfica de la unión.</div>
+        <div class="controls">
+            <!-- Campos de texto exclusivos para este script -->
+            <input type="text" id="int1Union" readonly><span>\( \cup \)</span>
+            <input type="text" id="int2Union" readonly>
+            <!-- Botones para generar intervalos y calcular intersección -->
+            <button id="btnGenerarUnion">Generar Intervalos</button>
+            <button id="btnCalcularUnion">Cálculo y representación gráfica de la Union</button>
+        </div>
+        <!-- Contenedor para el intervalo intersección (usado por MathJax) -->
+        <div id="resultadoUnion" style="text-align:center; margin-bottom:5px; font-size:18px;">
+        
+        </div>
+        
+        <!-- Canvas exclusivo para este script -->
+        <canvas id="canvasUnionIntvs" width="565" height="200"></canvas>
+    </div>
+    
+    <script  src="js/intvunionIntev.js">
+  </script>
+</div>
+ 
+    <hr>
+</body>
+</html>
